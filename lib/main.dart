@@ -12,6 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -38,7 +39,7 @@ class _AnimateState extends State<Animate> with SingleTickerProviderStateMixin {
       duration: const Duration(seconds: 1),
     );
 
-    controller.repeat();
+    controller.repeat(reverse: true);
   }
 
   @override
@@ -62,7 +63,7 @@ class _AnimateState extends State<Animate> with SingleTickerProviderStateMixin {
           child: AnimatedBuilder(
             animation: controller,
             builder: (context, child) {
-              return PerlinNoise(value: controller.value);
+              return PerlinNoiseAnimation(value: controller.value);
             },
           ),
         ),
